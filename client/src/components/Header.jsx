@@ -1,21 +1,22 @@
+import { Link } from 'react-router-dom';
 import '../styles/Header.css';
 
-export default () => {
+export default function Header() {
     return (
         <header>
-        <h1><a className="home" href="#">GamesPlay</a></h1>
-        <nav>
-            <a href="#">All games</a>
+            <h1><Link className="home" to="#">GamesPlay</Link></h1>
+            <nav>
+                <Link to="#">All games</Link>
 
-            <div id="user">
-                <a href="#">Create Game</a>
-                <a href="#">Logout</a>
-            </div>
-            <div id="guest">
-                <a href="#">Login</a>
-                <a href="#">Register</a>
-            </div>
-        </nav>
-    </header>
+                <div id="user">
+                    <Link to="#">Create Game</Link>
+                    <Link to="#">Logout</Link>
+                </div>
+                <div id="guest">
+                    <Link to="#">Login</Link>
+                    <Link to="#">Register</Link>
+                </div>
+            </nav>
+        </header>
     )
 }

@@ -1,6 +1,6 @@
 import '../styles/Home.css';
 
-export default () => {
+export default function Home() {
     return (
         <section id="welcome-world">
 
