@@ -1,4 +1,6 @@
-export default Home = () => {
+import '../styles/Home.css';
+
+export default () => {
     return (
         <section id="welcome-world">
 

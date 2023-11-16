@@ -1,4 +1,6 @@
-export default Header = () => {
+import '../styles/Header.css';
+
+export default () => {
     return (
         <header>
         <h1><a className="home" href="#">GamesPlay</a></h1>
