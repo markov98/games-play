@@ -8,7 +8,7 @@ export default function Header() {
                 <Link to="#">All games</Link>
 
                 <div id="user">
-                    <Link to="#">Create Game</Link>
+                    <Link to="/add-game">Create Game</Link>
                     <Link to="#">Logout</Link>
                 </div>
                 <div id="guest">
