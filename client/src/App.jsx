@@ -4,6 +4,7 @@ import Home from "./components/Home"
 import Login from './components/Login';
 import Register from './components/Register';
 import AddGame from './components/AddGame';
+import Catalogue from './components/Catalogue';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/add-game' element={<AddGame />} />
+          <Route path='/catalogue' element={<Catalogue />} />
         </Routes>
       </main>
 
