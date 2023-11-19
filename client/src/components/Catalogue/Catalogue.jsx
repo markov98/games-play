@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllGames }  from "../services/gameService";
+import { getAllGames }  from "../../services/gameService";
 
 export default function Catalogue() {
     const [games, setGames] = useState([]);
@@ -8,7 +8,7 @@ export default function Catalogue() {
         getAllGames()
             .then(result => setGames(result))
             .then(console.log(games));
-    })
+    }, []);
 
     return (
         <section id="catalog-page">

@@ -3,8 +3,8 @@ import Header from "./components/Header"
 import Home from "./components/Home"
 import Login from './components/Login';
 import Register from './components/Register';
-import AddGame from './components/AddGame';
-import Catalogue from './components/Catalogue';
+import AddGame from './components/AddGame/AddGame';
+import Catalogue from './components/Catalogue/Catalogue';
 
 function App() {
 
