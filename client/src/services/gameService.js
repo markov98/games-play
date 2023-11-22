@@ -1,4 +1,4 @@
-import * as request from "../libreries/request";
+import * as request from "../libraries/request";
 
 const baseUrl = 'http://localhost:3030/jsonstore/games'
 
