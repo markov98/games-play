@@ -1,9 +1,9 @@
 import useForm from "../../hooks/useForm";
 
-export default function Login(loginSubmitHandler) {
+export default function Login({loginSubmitHandler}) {
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-        email: '',
-        password: ''
+        'email': '',
+        'password': ''
     });
 
     return (
