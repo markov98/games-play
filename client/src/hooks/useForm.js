@@ -5,7 +5,7 @@ export default function useForm(submitHandler, initialValues) {
 
     useEffect(() => {
         setValues(initialValues);
-    }, [initialValues])
+    }, [initialValues]);
 
     const onChange = (e) => {
         setValues(state => ({
@@ -24,5 +24,5 @@ export default function useForm(submitHandler, initialValues) {
         values,
         onChange,
         onSubmit
-    }
+    };
 }
