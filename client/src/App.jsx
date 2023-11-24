@@ -16,20 +16,22 @@ function App() {
   }
 
   return (
-    <div id="box">
-      <Header />
-      <main id="main-content">
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login loginSubmitHandler={loginSubmitHandler} />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/add-game' element={<AddGame />} />
-          <Route path='/catalogue' element={<Catalogue />} />
-          <Route path="/games/:gameId" element={<GameDetails /> } />
-        </Routes>
-      </main>
+    <AuthContext.provider value={loginSubmitHandler}>
+      <div id="box">
+        <Header />
+        <main id="main-content">
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/add-game' element={<AddGame />} />
+            <Route path='/catalogue' element={<Catalogue />} />
+            <Route path="/games/:gameId" element={<GameDetails />} />
+          </Routes>
+        </main>
 
-    </div>
+      </div>
+    </AuthContext.provider>
   )
 }
 
