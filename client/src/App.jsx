@@ -7,6 +7,7 @@ import Register from './components/Register/Register';
 import AddGame from './components/AddGame/AddGame';
 import Catalogue from './components/Catalogue/Catalogue';
 import GameDetails from './components/GameDetails/GameDetails';
+import AuthContext from "./contexts/authContext";
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -16,7 +17,7 @@ function App() {
   }
 
   return (
-    <AuthContext.provider value={loginSubmitHandler}>
+    <AuthContext.Provider value={{loginSubmitHandler}}>
       <div id="box">
         <Header />
         <main id="main-content">
@@ -31,8 +32,8 @@ function App() {
         </main>
 
       </div>
-    </AuthContext.provider>
+    </AuthContext.Provider>
   )
 }
 
-export default App
+export default App;
