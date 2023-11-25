@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../contexts/authContext';
 
 export default function Header() {
-    const { isAuthencticated } = AuthContext;
+    const { isAuthencticated, username } = AuthContext;
 
     return (
         <header>
@@ -13,6 +13,7 @@ export default function Header() {
                     <div id="user">
                         <Link to="/add-game">Create Game</Link>
                         <Link to="#">Logout</Link>
+                        <span>Welcome, {username}!</span>
                     </div> :
                     <div id="guest">
                         <Link to="/login">Login</Link>
