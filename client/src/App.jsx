@@ -33,7 +33,7 @@ function App() {
     loginSubmitHandler,
     username: auth.username,
     email: auth.email,
-    isAuthencticated: !!auth.username
+    isAuthenticated: !!auth.username
   }
 
   return (
