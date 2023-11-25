@@ -22,7 +22,7 @@ function App() {
       const result = await login(values.email, values.password);
     
       setAuth(result);
-  
+
       navigate('/');
     } catch (err) {
       alert(err.message);
