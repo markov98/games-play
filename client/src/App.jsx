@@ -19,7 +19,7 @@ function App() {
 
   const loginSubmitHandler = async (values) => {
     try {
-      const result = await login(values);
+      const result = await login(values.email, values.password);
     
       setAuth(result);
   
