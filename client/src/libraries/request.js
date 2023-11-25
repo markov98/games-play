@@ -17,9 +17,11 @@ const request = async (method, url, data) => {
         method,
     });
 
-    const result = await response.json();
+    if (!response.ok) {
+        throw new Error((await response.json()).message)
+    }
 
-    return result;
+    return response.json();
 };
 
 export const get = request.bind(null, 'GET');

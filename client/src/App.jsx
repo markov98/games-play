@@ -18,15 +18,19 @@ function App() {
   const navigate = useNavigate();
 
   const loginSubmitHandler = async (values) => {
-    const result = await login(values);
+    try {
+      const result = await login(values);
     
-    setAuth(result);
-
-    navigate('/');
+      setAuth(result);
+  
+      navigate('/');
+    } catch (err) {
+      alert(err.message);
+    }
   }
 
   return (
-    <AuthContext.Provider value={{loginSubmitHandler}}>
+    <AuthContext.Provider value={{loginSubmitHandler, ...auth}}>
       <div id="box">
         <Header />
         <main id="main-content">
