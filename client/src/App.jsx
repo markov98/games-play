@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import AuthContext from "./contexts/authContext";
-import { login, register } from "./services/authService";
+import { login, logout, register } from "./services/authService";
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -11,6 +11,7 @@ import Register from './components/Register/Register';
 import AddGame from './components/AddGame/AddGame';
 import Catalogue from './components/Catalogue/Catalogue';
 import GameDetails from './components/GameDetails/GameDetails';
+import Logout from "./components/Logout/Logout";
 
 
 function App() {
@@ -43,9 +44,22 @@ function App() {
     }
   }
 
+  const logoutHandler = async () => {
+    try {
+      await logout();
+
+      setAuth({});
+
+      navigate('/');
+    } catch (err) {
+      alert(err);
+    }
+  }
+
   const values = {
     loginSubmitHandler,
     registerSubmitHandler,
+    logoutHandler,
     username: auth.username || auth.email,
     email: auth.email,
     isAuthenticated: !!auth.accessToken
@@ -63,6 +77,7 @@ function App() {
             <Route path='/add-game' element={<AddGame />} />
             <Route path='/catalogue' element={<Catalogue />} />
             <Route path="/games/:gameId" element={<GameDetails />} />
+            <Route path='/logout' element={<Logout />} />
           </Routes>
         </main>
 
