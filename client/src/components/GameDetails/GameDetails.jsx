@@ -1,13 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getOneGame } from "../../services/gameService";
 import { getAllComments, createComment } from "../../services/commentService";
+import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/authContext";
 
 export default function GameDetails() {
+    const { email } = useContext(AuthContext);
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
     const { gameId } = useParams();
+
+    const addCommentHandler = async (e) => {
+        const newComment = await createComment(
+            gameId,
+            values['comment']
+        );
+
+        setComments(state => [...state, { ...newComment, owner: { email } }]);
+    }
+
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, { 'comment:': '' })
 
     useEffect(() => {
         getOneGame(gameId)
@@ -16,20 +30,6 @@ export default function GameDetails() {
         getAllComments(gameId)
             .then(setComments);
     }, [gameId]);
-
-    const addCommentHandler = async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.currentTarget);
-
-        const newComment = await createComment(
-            gameId,
-            formData.get('username'),
-            formData.get('comment')
-        );
-
-        setComments(state => [...state, newComment]);
-    }
 
     return (
         <section id="game-details">
@@ -47,9 +47,9 @@ export default function GameDetails() {
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {comments.map(({ _id, username, text }) => (
+                        {comments.map(({ _id, owner, text }) => (
                             <li key={_id} className="comment">
-                                <p>{username}: {text}</p>
+                                <p>{owner.email}: {text}</p>
                             </li>
                         ))}
                     </ul>
@@ -68,9 +68,8 @@ export default function GameDetails() {
 
             <article className="create-comment">
                 <label>Add new comment:</label>
-                <form className="form" onSubmit={addCommentHandler}>
-                    <input type="text" name="username" placeholder="username" />
-                    <textarea name="comment" placeholder="Comment......"></textarea>
+                <form className="form" onSubmit={onSubmit}>
+                    <textarea name="comment" placeholder="Comment......" onChange={onChange}>{values['comment']}</textarea>
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
