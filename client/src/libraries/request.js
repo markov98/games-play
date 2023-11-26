@@ -18,7 +18,11 @@ const request = async (method, url, data) => {
     });
 
     if (!response.ok) {
-        throw new Error((await response.json()).message)
+        throw new Error((await response.json()).message);
+    }
+
+    if (response.status === 204) {
+        return {};
     }
 
     return response.json();
