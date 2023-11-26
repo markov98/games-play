@@ -23,6 +23,7 @@ function App() {
       const result = await login(values.email, values.password);
     
       setAuth(result);
+      localStorage.setItem('accessToken', result.accessToken);
 
       navigate('/');
     } catch (err) {
@@ -49,6 +50,7 @@ function App() {
       await logout();
 
       setAuth({});
+      localStorage.clear('accessToken');
 
       navigate('/');
     } catch (err) {
