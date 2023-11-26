@@ -10,7 +10,7 @@ export const getAllComments = async (gameId) => {
     const result = await request.get(`${baseUrl}`);
 
     // TODO: temp solution until migration to collections service 
-    return Object.values(result).filter(comment => comment.gameId === gameId);
+    return result.filter(comment => comment.gameId === gameId);
 };
 
 export const createComment = async (gameId, username, text) => {

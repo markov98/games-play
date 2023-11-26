@@ -5,7 +5,7 @@ const baseUrl = 'http://localhost:3030/data/games'
 export const getAllGames = async () => {
     const result = await request.get(baseUrl);
 
-    return Object.values(result);
+    return result;
 };
 
 export const getOneGame = async (gameId) => {
