@@ -1,6 +1,6 @@
 import * as request from "../libraries/request";
 
-const baseUrl = 'http://localhost:3030/jsonstore/games'
+const baseUrl = 'http://localhost:3030/data/games'
 
 export const getAllGames = async () => {
     const result = await request.get(baseUrl);
