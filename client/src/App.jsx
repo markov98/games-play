@@ -15,7 +15,12 @@ import Logout from "./components/Logout/Logout";
 
 
 function App() {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState(() => {
+    localStorage.removeItem('accessToken');
+
+    return {};
+  });
+  
   const navigate = useNavigate();
 
   const loginSubmitHandler = async (values) => {
