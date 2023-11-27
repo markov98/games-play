@@ -7,7 +7,7 @@ import useForm from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/authContext";
 
 export default function GameDetails() {
-    const { email } = useContext(AuthContext);
+    const { email, userId } = useContext(AuthContext);
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
     const { gameId } = useParams();
@@ -29,6 +29,8 @@ export default function GameDetails() {
         getAllComments(gameId)
             .then(setComments);
     }, [gameId]);
+
+    const isOwner = userId === game._ownerId;
 
     return (
         <section id="game-details">
@@ -58,11 +60,11 @@ export default function GameDetails() {
                     )}
                 </div>
 
-                {/* <!-- Edit/Delete buttons ( Only for creator of this game )  -->
+                {isOwner ?
                 <div className="buttons">
                     <a href="#" className="button">Edit</a>
                     <a href="#" className="button">Delete</a>
-                </div> */}
+                </div> : null}
             </div>
 
             <article className="create-comment">
