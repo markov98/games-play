@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getOneGame } from "../../services/gameService";
 import { getAllComments, createComment } from "../../services/commentService";
 import useForm from "../../hooks/useForm";
-import AuthContext from "../../contexts/authContext";
+import { AuthContext } from "../../contexts/authContext";
 
 export default function GameDetails() {
     const { email } = useContext(AuthContext);
