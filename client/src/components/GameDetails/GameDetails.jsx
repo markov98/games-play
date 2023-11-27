@@ -11,8 +11,9 @@ export default function GameDetails() {
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
     const { gameId } = useParams();
+    const { values, onChange, onSubmit } = useForm(addCommentHandler, { 'comment:': '' });
 
-    const addCommentHandler = async (e) => {
+    async function addCommentHandler(e) {
         const newComment = await createComment(
             gameId,
             values['comment']
@@ -20,8 +21,6 @@ export default function GameDetails() {
 
         setComments(state => [...state, { ...newComment, owner: { email } }]);
     }
-
-    const { values, onChange, onSubmit } = useForm(addCommentHandler, { 'comment:': '' })
 
     useEffect(() => {
         getOneGame(gameId)
