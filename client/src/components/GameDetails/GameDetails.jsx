@@ -32,6 +32,11 @@ export default function GameDetails() {
 
     const isOwner = userId === game._ownerId;
 
+    const paths = {
+        edit: `/games/${gameId}/edit`,
+        delete: `/games/${gameId}/delete`
+    }
+
     return (
         <section id="game-details">
             <h1>Game Details</h1>
@@ -62,8 +67,8 @@ export default function GameDetails() {
 
                 {isOwner ?
                 <div className="buttons">
-                    <Link to="/games/:gameId/edit" className="button">Edit</Link>
-                    <Link to="/games/:gameId/delete" className="button">Delete</Link>
+                    <Link to={paths.edit} className="button">Edit</Link>
+                    <Link to={paths.delete} className="button">Delete</Link>
                 </div> : null}
             </div>
 

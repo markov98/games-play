@@ -10,6 +10,7 @@ import AddGame from './components/AddGame/AddGame';
 import Catalogue from './components/Catalogue/Catalogue';
 import GameDetails from './components/GameDetails/GameDetails';
 import Logout from "./components/Logout/Logout";
+import GameEdit from './components/EditGame/EditGame';
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
             <Route path='/catalogue' element={<Catalogue />} />
             <Route path="/games/:gameId" element={<GameDetails />} />
             <Route path='/logout' element={<Logout />} />
+            <Route path='/games/:gameId/edit' element={<GameEdit />} />
           </Routes>
         </main>
 
