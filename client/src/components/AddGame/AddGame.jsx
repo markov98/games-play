@@ -15,7 +15,7 @@ export default function AddGame() {
             navigate('/catalogue');
         } catch (err) {
             // Error notification
-            console.log(err);
+            alert(err);
         }
     }
 

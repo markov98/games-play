@@ -19,3 +19,9 @@ export const addGame = async (gameData) => {
 
     return result;
 };
+
+export const editGame = async (gameId, gameData) => {
+    const result = await request.put(`${baseUrl}/${gameId}`, gameData);
+
+    return result;
+};
