@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , Link } from "react-router-dom";
+import useForm from "../../hooks/useForm";
 
 import { getOneGame } from "../../services/gameService";
 import { getAllComments, createComment } from "../../services/commentService";
-import useForm from "../../hooks/useForm";
 import { AuthContext } from "../../contexts/authContext";
 
 export default function GameDetails() {
@@ -62,8 +62,8 @@ export default function GameDetails() {
 
                 {isOwner ?
                 <div className="buttons">
-                    <a href="#" className="button">Edit</a>
-                    <a href="#" className="button">Delete</a>
+                    <Link to="/games/:gameId/edit" className="button">Edit</Link>
+                    <Link to="/games/:gameId/delete" className="button">Delete</Link>
                 </div> : null}
             </div>
 
