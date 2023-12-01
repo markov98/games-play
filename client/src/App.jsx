@@ -11,27 +11,30 @@ import Catalogue from './components/Catalogue/Catalogue';
 import GameDetails from './components/GameDetails/GameDetails';
 import Logout from "./components/Logout/Logout";
 import GameEdit from './components/EditGame/EditGame';
+import ErrorBoundary from './components/ErrorBoundary';
 
 
 export default function App() {
   return (
-    <AuthContextProvider>
-      <div id="box">
-        <Header />
-        <main id="main-content">
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/add-game' element={<AddGame />} />
-            <Route path='/catalogue' element={<Catalogue />} />
-            <Route path="/games/:gameId" element={<GameDetails />} />
-            <Route path='/logout' element={<Logout />} />
-            <Route path='/games/:gameId/edit' element={<GameEdit />} />
-          </Routes>
-        </main>
+    <ErrorBoundary>
+      <AuthContextProvider>
+        <div id="box">
+          <Header />
+          <main id="main-content">
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/add-game' element={<AddGame />} />
+              <Route path='/catalogue' element={<Catalogue />} />
+              <Route path="/games/:gameId" element={<GameDetails />} />
+              <Route path='/logout' element={<Logout />} />
+              <Route path='/games/:gameId/edit' element={<GameEdit />} />
+            </Routes>
+          </main>
 
-      </div>
-    </AuthContextProvider>
+        </div>
+      </AuthContextProvider>
+    </ErrorBoundary>
   )
 }
