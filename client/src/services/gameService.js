@@ -10,13 +10,13 @@ export const getAllGames = async () => {
 
 export const getLatestGames = async () => {
     const query = new URLSearchParams({
-        // sortBy: `_createdOn desc`,
+        sortBy: `_createdOn desc`,
         offset: 0,
         pageSize: 3,
     });
 
     const result = await request.get(`${baseUrl}?${query}`);
-
+    
     return result;
 }
 
