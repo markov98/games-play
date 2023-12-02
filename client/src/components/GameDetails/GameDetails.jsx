@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams , Link } from "react-router-dom";
+import { useParams , Link, useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 
-import { getOneGame } from "../../services/gameService";
+import { deleteGame, getOneGame } from "../../services/gameService";
 import { getAllComments, createComment } from "../../services/commentService";
 import { AuthContext } from "../../contexts/authContext";
 
@@ -12,6 +12,7 @@ export default function GameDetails() {
     const [comments, setComments] = useState([]);
     const { gameId } = useParams();
     const { values, onChange, onSubmit } = useForm(addCommentHandler, { 'comment:': '' });
+    const navigate = useNavigate();
 
     async function addCommentHandler(e) {
         const newComment = await createComment(
@@ -20,6 +21,17 @@ export default function GameDetails() {
         );
 
         setComments(state => [...state, { ...newComment, owner: { email } }]);
+    }
+
+    async function deleteGameHandler() {
+        if (confirm('Do you want to delete this game?')) {
+            try {
+                await deleteGame(gameId);
+                navigate('/catalogue');
+            } catch (err) {
+                alert(err);
+            }
+        }
     }
 
     useEffect(() => {
@@ -68,7 +80,7 @@ export default function GameDetails() {
                 {isOwner ?
                 <div className="buttons">
                     <Link to={paths.edit} className="button">Edit</Link>
-                    <Link to={paths.delete} className="button">Delete</Link>
+                    <Link onClick={deleteGameHandler} className="button">Delete</Link>
                 </div> : null}
             </div>
 
